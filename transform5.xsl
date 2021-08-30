@@ -25,31 +25,35 @@
   <html>
     <head>
     </head>
-    <body>
+    <body style="font-family:Arial,Helvetica,sans-serif;margin:30px;">
       <article>
-        <h1><xsl:value-of select="article/title"/></h1>
+        <h1 style="color:green;text-align:center;"><xsl:value-of select="article/title"/></h1>
+
+        <xsl:for-each select="article/section">
+          <h2 style="color:navy;"><xsl:value-of select="title"/></h2>
+          <div style="padding:3px;"><xsl:apply-templates select="."/></div>
+        </xsl:for-each>
 
         <!-- First main section. Introduction -->
-        <xsl:apply-templates select="article/section[1]"/>
+        <!-- <xsl:apply-templates select="article/section[1]"/> -->
 
         <!-- Second main section. Problem description -->
-        <xsl:apply-templates select="article/section[2]"/>
+        <!-- <xsl:apply-templates select="article/section[2]"/> -->
 
         <!-- Third main section. DocBook elements catalog -->
-        <xsl:apply-templates select="article/section[3]"/>
+        <!-- <xsl:apply-templates select="article/section[3]"/> -->
 
-        <!-- Third main section. Bonus tasks -->
-        <xsl:apply-templates select="article/section[4]"/>
+        <!-- Fourth main section. Bonus tasks -->
+        <!-- <xsl:apply-templates select="article/section[4]"/> -->
 
         <!-- Fifth main section. Tools -->
-        <xsl:apply-templates select="article/section[5]"/>
+        <!-- <xsl:apply-templates select="article/section[5]"/> -->
 
-        <!-- Fifth main section. Acceptance criteria -->
-        <xsl:apply-templates select="article/section[6]"/>
+        <!-- Sixth main section. Acceptance criteria -->
+        <!-- <xsl:apply-templates select="article/section[6]"/> -->
 
-        <!-- Fifth main section. Resources -->
-        <xsl:apply-templates select="article/section[7]"/>
-
+        <!-- Seventh main section. Resources -->
+        <!-- <xsl:apply-templates select="article/section[7]"/> -->
 
       </article>
     </body>
@@ -63,7 +67,7 @@
     <xsl:attribute name="id">
       <xsl:text>chapter-introduction</xsl:text>
     </xsl:attribute>
-    <h2><xsl:value-of select="title"/></h2>
+    <!-- <h2><xsl:value-of select="title"/></h2> -->
     <p><xsl:value-of select="para[1]"/></p>
     <p><xsl:value-of select="para[2]"/></p>
   </xsl:copy>
@@ -74,7 +78,7 @@
 <!-- Second main section. Problem description ============= -->
 <xsl:template match="article/section[2]">
   <xsl:copy select="section[2]">
-    <h2><xsl:value-of select="title"/></h2>
+    <!-- <h2><xsl:value-of select="title"/></h2> -->
     <p><xsl:value-of select="para[1]"/></p>
     <p><xsl:value-of select="para[2]"/></p>
   </xsl:copy>
@@ -85,7 +89,7 @@
 <!-- Third main section. DocBook elements catalog ========= -->
 <xsl:template match="article/section[3]">
   <xsl:copy>
-    <h2><xsl:value-of select="title"/></h2>
+    <!-- <h2><xsl:value-of select="title"/></h2> -->
     <xsl:call-template name="para"/>
     <xsl:call-template name="block-level-section"/>
     <xsl:call-template name="inline-elements-section"/>
@@ -434,7 +438,7 @@
 <!-- Fourth main section. Bonus tasks ========= -->
 <xsl:template match="article/section[4]">
   <xsl:copy>
-    <h2><xsl:value-of select="title"/></h2>
+    <!-- <h2><xsl:value-of select="title"/></h2> -->
     <p><xsl:value-of select="para"/></p>
     <xsl:call-template name="table-of-content-inner-section"/>
     <xsl:call-template name="multiple-html-page-inner-section"/>
@@ -464,7 +468,7 @@
     <p><xsl:value-of select="section[2]/orderedlist/listitem/para[1]"/></p>
     <ol>
       <xsl:for-each select="section[2]/orderedlist/listitem">
-        <li><p><xsl:copy-of select="para"/></p></li>
+        <li><p><xsl:copy-of select="para/text()"/></p></li>
       </xsl:for-each>
     </ol>
   </xsl:copy>
@@ -477,7 +481,7 @@
 <!-- Fifth main section. Tools ========= -->
 <xsl:template match="article/section[5]">
   <xsl:copy>
-    <h2><xsl:value-of select="title"/></h2>
+    <!-- <h2><xsl:value-of select="title"/></h2> -->
     <xsl:for-each select="para">
       <p><xsl:value-of select="."/></p>
     </xsl:for-each>
@@ -488,7 +492,7 @@
 <!-- Sixth main section. Acceptance criteria ========= -->
 <xsl:template match="article/section[6]">
   <xsl:copy>
-    <h2><xsl:value-of select="title"/></h2>
+    <!-- <h2><xsl:value-of select="title"/></h2> -->
     <xsl:for-each select="para">
       <p><xsl:value-of select="."/></p>
     </xsl:for-each>
@@ -499,7 +503,7 @@
 <!-- Seventh main section. Resources ========= -->
 <xsl:template match="article/section[7]">
   <xsl:copy>
-    <h2><xsl:value-of select="title"/></h2>
+    <!-- <h2><xsl:value-of select="title"/></h2> -->
     <xsl:for-each select="para">
       <p><xsl:value-of select="."/></p>
     </xsl:for-each>
