@@ -4,4 +4,4 @@ To test the transformation use "transform5.xsl" file and "XSLT_Trainee_Test_Prob
 
 This trasformation was tested using Saxon.
 
-java -jar saxon-he-10.5.jar -xsl:transform5.xsl -s:XSLT_Trainee_Test_Problem.xml -o:result.html
+java -jar saxon-he-10.5.jar -xsl:newtransformation.xsl -s:XSLT_Trainee_Test_Problem.xml -o:result.html
